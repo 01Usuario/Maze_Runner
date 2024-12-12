@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80ecd3053188c1488ee4633321ec00e, type: 3}
+  m_Name: Naruto
+  m_EditorClassIdentifier: 
+  FaccionImage: {fileID: 21300000, guid: 7720a102d976c2b40bc6d5a69f9cf763, type: 3}
+  faccion:
+  - {fileID: 11400000, guid: d3d63d6ed92447442bbaf07c32814c58, type: 2}
+  - {fileID: 11400000, guid: d45d40d5954e5e9488ca3f1aa271d327, type: 2}
+  - {fileID: 11400000, guid: 55beb42a76be3014087246fe6025808b, type: 2}
+  - {fileID: 11400000, guid: 21ff34088114ede4cb91b3be22267001, type: 2}

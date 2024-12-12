@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
-  m_Name: MIkasa
+  m_Name: Mikasa
   m_EditorClassIdentifier: 
-  CharacterImage: {fileID: 21300000, guid: 3e67d0a715efc6449ac7bc1d560f4e49, type: 3}
+  CharacterImage: {fileID: 21300000, guid: 44314e96b757d2049babaa0d3d7a31d8, type: 3}
   plataform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 0
   habilidad: 2
