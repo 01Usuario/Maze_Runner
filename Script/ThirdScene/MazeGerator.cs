@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MazeGenerator : MonoBehaviour
 {
-   public static int dim= ConfigurarOpciones.dimensionLaberinto;
+   public static int dim= ConfigureOptions.mazeDimension;
     public GameObject muroUIPrefab;
     public GameObject caminoPrefab;
     public RectTransform canvasRectTransform;
@@ -26,6 +26,15 @@ public class MazeGenerator : MonoBehaviour
             }
         }
 
+        
+        ReservarEspacios();
+        // Generar el laberinto
+        GenerarLaberinto(1, 1);
+        // Instanciar el laberinto en el Canvas
+        CrearLaberintoUI();
+    }
+
+     private void ReservarEspacios(){
         // Crear el espacio de 2x2 en el centro
         int centroFila = dim / 2;
         int centroColumna = dim/ 2;
@@ -54,13 +63,7 @@ public class MazeGenerator : MonoBehaviour
         grid[dim-2,dim-3]=0;
         grid[dim-3,dim-2]=0;
         grid[dim-3,dim-3]=0;
-
-        // Generar el laberinto
-        GenerarLaberinto(1, 1);
-        // Instanciar el laberinto en el Canvas
-        CrearLaberintoUI();
-    }
-
+     }
     private void GenerarLaberinto(int fila, int columna)
     {
         var direcciones = new List<int[]> { new int[] { 0, 1 }, new int[] { 1, 0 }, new int[] { 0, -1 }, new int[] { -1, 0 } };

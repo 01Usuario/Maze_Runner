@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80ecd3053188c1488ee4633321ec00e, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd42f6881d3e60449d9ca1d235df85c, type: 3}
   m_Name: Marvel
   m_EditorClassIdentifier: 
-  FaccionImage: {fileID: 21300000, guid: 2fd99e77e99618543942c2786c663437, type: 3}
-  faccion:
+  factionImage: {fileID: 21300000, guid: 2fd99e77e99618543942c2786c663437, type: 3}
+  factionCharacters:
   - {fileID: 11400000, guid: 16b3c6dca6bdb6e429ef15cb150dfdcb, type: 2}
   - {fileID: 11400000, guid: e77d113bd12f8f34899bf45f088ea622, type: 2}
   - {fileID: 11400000, guid: b1254c145ee310045b39cc52404809d1, type: 2}

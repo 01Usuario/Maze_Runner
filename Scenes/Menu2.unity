@@ -431,7 +431,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1662055848}
         m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: AnteriorFaccion
+        m_MethodName: PreviousFaction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1042,51 +1042,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804989911}
   m_CullTransparentMesh: 1
---- !u!1 &1049076312
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1049076314}
-  - component: {fileID: 1049076313}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1049076313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049076312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9160ffac7bc644442a9b6ced5a2b9eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personajesSeleccionados: []
---- !u!4 &1049076314
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1049076312}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 941.258, y: 505.524, z: -8.453479}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1094736943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,7 +1126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1662055848}
         m_TargetAssemblyTypeName: SelectCharacter, Assembly-CSharp
-        m_MethodName: SiguienteFaccion
+        m_MethodName: NextFaction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1514,20 +1469,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ff39a6c14e97f40924f1ea2b6e999d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facciones:
+  factions:
   - {fileID: 11400000, guid: 9d883071c80c20343a76e8b8bdbec733, type: 2}
-  - {fileID: 11400000, guid: da557d874221db3478dd985afbc5f236, type: 2}
-  - {fileID: 11400000, guid: 3e4a993a8ef478746ae3e4224a381527, type: 2}
-  - {fileID: 11400000, guid: 6d6bccd2173a1ec40a563a4e4ae8ed67, type: 2}
-  imageFaccion: {fileID: 564580730}
-  personajesPanel: {fileID: 804989912}
-  personajesButtons:
+  - {fileID: 11400000, guid: d28f97e6f25c182438312e0636c6699f, type: 2}
+  - {fileID: 11400000, guid: a39e63df4643f424a9f13c7cc1134670, type: 2}
+  - {fileID: 11400000, guid: c20e25a9806d37743b9d019ecc907932, type: 2}
+  factionImageDisplay: {fileID: 564580730}
+  charactersPanel: {fileID: 804989912}
+  characterButtons:
   - {fileID: 29486457}
   - {fileID: 153029475}
   - {fileID: 2133677639}
   - {fileID: 1329721362}
-  siguienteFaccionButton: {fileID: 1094736945}
-  anteriorFaccionButton: {fileID: 54651362}
+  nextFactionButton: {fileID: 1094736945}
+  previousFactionButton: {fileID: 54651362}
 --- !u!4 &1662055849
 Transform:
   m_ObjectHideFlags: 0
@@ -1911,4 +1866,3 @@ SceneRoots:
   - {fileID: 553544117}
   - {fileID: 126728533}
   - {fileID: 1662055849}
-  - {fileID: 1049076314}

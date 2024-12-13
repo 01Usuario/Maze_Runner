@@ -1,11 +1,16 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
-    private new string name {get; set;}
-    private List<Personajes> pieceList;
-    private int id;
+    public List<Characters> pieceList = new List<Characters>(); // Initialize the list directly
+    public int id;
+    public bool isTurn;
+
+    public Player(int id)
+    {
+        this.id = id;
+    }
 }
+

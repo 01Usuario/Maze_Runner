@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
   m_Name: IronMan
   m_EditorClassIdentifier: 
-  CharacterImage: {fileID: 21300000, guid: f02f71b2a724837409209a81dfb2a098, type: 3}
-  plataform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
+  characterImage: {fileID: 21300000, guid: f02f71b2a724837409209a81dfb2a098, type: 3}
+  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 3
-  habilidad: 2
+  ability: 2
+  hasKey: 0

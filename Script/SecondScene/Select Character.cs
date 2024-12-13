@@ -5,93 +5,130 @@ using UnityEngine.SceneManagement;
 
 public class SelectCharacter : MonoBehaviour
 {
-    public List<Facciones> facciones = new List<Facciones>();
-    public Image imageFaccion;
-    public Transform personajesPanel; // El panel donde aparecerán los botones de personajes
-    public List<Button> personajesButtons; // Lista de botones de personajes
-    public Button siguienteFaccionButton; // Botón para cambiar a la siguiente facción
-    public Button anteriorFaccionButton; // Botón para cambiar a la facción anterior
-    private int index = 0;
-    private int cantidadEscoger;
-    private int escogidos = 0;
+    public List<Factions> factions = new List<Factions>();
+    public Image factionImageDisplay;
+    public Transform charactersPanel; 
+    public List<Button> characterButtons; 
+    public Button nextFactionButton; 
+    public Button previousFactionButton; 
+
+    private int currentFactionIndex = 0;
+    private int piecesToChoose;
+    private int chosenPieces = 0;
+    private int totalPlayers;
+    public List<Player> players = new List<Player>(); 
+    private int currentPlayerIndex = 0;
+    public Player currentPlayer;
 
     void Start()
     {
-        cantidadEscoger = ConfigurarOpciones.cantidadFichas;
-        MostrarFaccion();
+        piecesToChoose = ConfigureOptions.pieceCount;
+        totalPlayers = ConfigureOptions.playerCount;
+
+        InitializePlayers();
+        currentPlayer = players[currentPlayerIndex];
+        DisplayFaction();
     }
 
-    void MostrarFaccion()
+     void InitializePlayers()
     {
-        // Actualizar la imagen de la facción
-        if (index >= 0 && index < facciones.Count)
+        for (int i = 0; i < totalPlayers; i++)
         {
-            imageFaccion.sprite = facciones[index].FaccionImage;
+            players.Add(new Player(i));
+        }
+    }
 
-            // Asignar los personajes de la facción a los botones
-            for (int i = 0; i < personajesButtons.Count; i++)
+    void DisplayFaction()
+    {
+        // Update the faction image
+        if (currentFactionIndex >= 0 && currentFactionIndex < factions.Count)
+        {
+            factionImageDisplay.sprite = factions[currentFactionIndex].factionImage;
+
+            // Assign the faction's characters to buttons
+            for (int i = 0; i < characterButtons.Count; i++)
             {
-                if (i < facciones[index].faccion.Count)
+                if (i < factions[currentFactionIndex].factionCharacters.Count)
                 {
-                    var localIndex = i; // Capturar el índice localmente
-                    var imageComponent = personajesButtons[localIndex].GetComponent<Image>();
+                    var localIndex = i; // Capture local index
+                    var imageComponent = characterButtons[localIndex].GetComponent<Image>();
+
                     if (imageComponent != null)
                     {
-                        imageComponent.sprite = facciones[index].faccion[localIndex].CharacterImage;
-                        Personajes personaje = facciones[index].faccion[localIndex];
-                        personajesButtons[localIndex].onClick.RemoveAllListeners();
-                        personajesButtons[localIndex].onClick.AddListener(() => SeleccionarPersonaje(personaje, personajesButtons[localIndex]));
-                        personajesButtons[localIndex].gameObject.SetActive(true);
+                        imageComponent.sprite = factions[currentFactionIndex].factionCharacters[localIndex].characterImage;
+                        Characters character = factions[currentFactionIndex].factionCharacters[localIndex];
+                        characterButtons[localIndex].onClick.RemoveAllListeners();
+                        characterButtons[localIndex].onClick.AddListener(() => SelectCharacterForPlayer(character, characterButtons[localIndex]));
+                        characterButtons[localIndex].gameObject.SetActive(true);
                     }
-                   
                 }
                 else
                 {
-                    personajesButtons[i].gameObject.SetActive(false);
+                    characterButtons[i].gameObject.SetActive(false);
                 }
             }
         }
-        
     }
 
-    public void SiguienteFaccion()
+    public void NextFaction()
     {
-        if (escogidos == 0) // Permite cambiar de facción solo si no se ha seleccionado ningún personaje
+        if (chosenPieces == 0) // Allow faction change only if no pieces are chosen
         {
-            index = (index + 1) % facciones.Count;
-            MostrarFaccion();
+            currentFactionIndex = (currentFactionIndex + 1) % factions.Count;
+            DisplayFaction();
         }
     }
 
-    public void AnteriorFaccion()
+    public void PreviousFaction()
     {
-        if (escogidos == 0) // Permite cambiar de facción solo si no se ha seleccionado ningún personaje
+        if (chosenPieces == 0) // Allow faction change only if no pieces are chosen
         {
-            index = (index - 1 + facciones.Count) % facciones.Count;
-            MostrarFaccion();
+            currentFactionIndex = (currentFactionIndex - 1 + factions.Count) % factions.Count;
+            DisplayFaction();
         }
     }
 
-    void SeleccionarPersonaje(Personajes personaje, Button button)
+
+    void SelectCharacterForPlayer(Characters character, Button button)
     {
-
-        if (escogidos < cantidadEscoger && !GameManager.instance.personajesSeleccionados.Contains(personaje))
+        if (currentPlayer == null || currentPlayer.pieceList == null)
         {
-            GameManager.instance.personajesSeleccionados.Add(personaje);
-            button.gameObject.SetActive(false); // Desaparecer el botón del personaje
-            escogidos++;
+            Debug.LogError("Error: CurrentPlayer or its pieceList is not initialized.");
+            return;
+        }
 
+        if (chosenPieces < piecesToChoose)
+        {
+            currentPlayer.pieceList.Add(character);
+            button.gameObject.SetActive(false); // Hide the character button
+            chosenPieces++;
 
-            // Desactivar los botones de cambio de facción
-            siguienteFaccionButton.interactable = false;
-            anteriorFaccionButton.interactable = false;
+            // Disable navigation buttons
+            nextFactionButton.interactable = false;
+            previousFactionButton.interactable = false;
 
-            if (escogidos == cantidadEscoger)
+            if (chosenPieces == piecesToChoose)
             {
-                // Cambiar a la siguiente escena
-                SceneManager.LoadScene(2);
+                AdvanceTurn();
             }
         }
-        
+    }
+
+void AdvanceTurn()
+    {
+        currentPlayerIndex++;
+
+        if (currentPlayerIndex < players.Count)
+        {
+            currentPlayer = players[currentPlayerIndex];
+            chosenPieces = 0;
+            nextFactionButton.interactable = true;
+            previousFactionButton.interactable = true;
+            DisplayFaction();
+        }
+        else
+        {
+            SceneManager.LoadScene(2); // Proceed to the next scene when all players are done
+        }
     }
 }

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80ecd3053188c1488ee4633321ec00e, type: 3}
-  m_Name: SNK
+  m_Script: {fileID: 11500000, guid: dbd42f6881d3e60449d9ca1d235df85c, type: 3}
+  m_Name: Shingeki No Kyojin
   m_EditorClassIdentifier: 
-  FaccionImage: {fileID: 21300000, guid: a2b073c9ca1498d4a8226484f398db6f, type: 3}
-  faccion:
+  factionImage: {fileID: 21300000, guid: a2b073c9ca1498d4a8226484f398db6f, type: 3}
+  factionCharacters:
   - {fileID: 11400000, guid: c782299b4585b4f48b201bc28ea5e8e0, type: 2}
-  - {fileID: 11400000, guid: d3efacabaf3531d488f9bf9e42aac1fd, type: 2}
   - {fileID: 11400000, guid: 8d304e76e42de4c46a1376b7b94f03b6, type: 2}
+  - {fileID: 11400000, guid: d3efacabaf3531d488f9bf9e42aac1fd, type: 2}
   - {fileID: 11400000, guid: 8694a77f6c360354d85f31942fc61528, type: 2}

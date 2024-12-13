@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80ecd3053188c1488ee4633321ec00e, type: 3}
+  m_Script: {fileID: 11500000, guid: dbd42f6881d3e60449d9ca1d235df85c, type: 3}
   m_Name: Naruto
   m_EditorClassIdentifier: 
-  FaccionImage: {fileID: 21300000, guid: 7720a102d976c2b40bc6d5a69f9cf763, type: 3}
-  faccion:
+  factionImage: {fileID: 21300000, guid: 7720a102d976c2b40bc6d5a69f9cf763, type: 3}
+  factionCharacters:
   - {fileID: 11400000, guid: d3d63d6ed92447442bbaf07c32814c58, type: 2}
   - {fileID: 11400000, guid: d45d40d5954e5e9488ca3f1aa271d327, type: 2}
-  - {fileID: 11400000, guid: 55beb42a76be3014087246fe6025808b, type: 2}
   - {fileID: 11400000, guid: 21ff34088114ede4cb91b3be22267001, type: 2}
+  - {fileID: 11400000, guid: 55beb42a76be3014087246fe6025808b, type: 2}
