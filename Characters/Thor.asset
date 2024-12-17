@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
   m_Name: Thor
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 21300000, guid: 14442641642a1d84580b5db5c5b0250d, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
+  characterImage: {fileID: 21300000, guid: 8d4a2125e6620454995f6e1ece4ba4ad, type: 3}
   faction: 3
   ability: 0
+  Range: 0
   hasKey: 0

@@ -16,7 +16,7 @@ public class SelectCharacter : MonoBehaviour
     private int piecesToChoose;
     private int chosenPieces = 0;
     private int totalPlayers;
-    public List<Player> players = new List<Player>(); 
+    public static List<Player> players = new List<Player>(); 
     private int currentPlayerIndex = 0;
     public Player currentPlayer;
 

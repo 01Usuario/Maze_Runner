@@ -484,6 +484,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252013530}
   m_CullTransparentMesh: 1
+--- !u!1 &508780341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508780342}
+  - component: {fileID: 508780343}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508780342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508780341}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1022.8796, y: 564.17413, z: -9.992176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &508780343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508780341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a45d0c47d0f2d34da9cce4364008aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeGenerator: {fileID: 1050693634}
+  characterPrefab: {fileID: 5016804438518095632, guid: 11f2dca3b4aecf64fbbecd13e27ef470, type: 3}
 --- !u!1 &519353750
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +967,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muroUIPrefab: {fileID: 704896139635579493, guid: 21cee3769fda20649abceaf8ead27fd5, type: 3}
   caminoPrefab: {fileID: 5745631849304204925, guid: 12c7423f2019675448297a2201875a25, type: 3}
-  canvasRectTransform: {fileID: 1500097003}
+  WorkSpaceRectTransform: {fileID: 1500097003}
+  trap:
+  - {fileID: 11400000, guid: f1dfcb189ceef624fb077d0b4fe9ff3a, type: 2}
+  - {fileID: 11400000, guid: ee14d8af83e03204ba2237c0a899b389, type: 2}
+  - {fileID: 11400000, guid: bc64c4ae37921bd42a2898c47b49946c, type: 2}
+  - {fileID: 11400000, guid: 81f3afe0949f4cb4db7bdae51c577c5d, type: 2}
+  created: 0
 --- !u!4 &1050693635
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,8 +1388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.7436, y: 6.3025}
-  m_SizeDelta: {x: 1381.5444, y: 981.9442}
+  m_AnchoredPosition: {x: 0.0040092, y: 0.0075912}
+  m_SizeDelta: {x: 1489.4, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500097004
 MonoBehaviour:
@@ -1617,3 +1669,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1815354652}
   - {fileID: 1050693635}
+  - {fileID: 508780342}

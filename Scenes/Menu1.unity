@@ -1024,13 +1024,15 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 25
+    - m_Text: 21
       m_Image: {fileID: 21300000, guid: 3e67d0a715efc6449ac7bc1d560f4e49, type: 3}
-    - m_Text: 35
+    - m_Text: 25
       m_Image: {fileID: 0}
-    - m_Text: 45
+    - m_Text: 27
       m_Image: {fileID: 0}
-    - m_Text: 55
+    - m_Text: 29
+      m_Image: {fileID: 0}
+    - m_Text: 31
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1235,7 +1237,7 @@ RectTransform:
   m_GameObject: {fileID: 735929979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 814472115}
@@ -3509,7 +3511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0050049, y: 0.0009613}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661844452
@@ -4081,7 +4083,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 21
 --- !u!222 &1982288794
 CanvasRenderer:
   m_ObjectHideFlags: 0

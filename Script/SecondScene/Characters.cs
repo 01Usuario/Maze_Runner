@@ -4,9 +4,9 @@ using UnityEngine;
 public class Characters : ScriptableObject
 {
     public Sprite characterImage;
-    public Sprite platform;
     public Faction faction;
     public Ability ability;
+    public int Range;
     public bool hasKey = false;
 }
 

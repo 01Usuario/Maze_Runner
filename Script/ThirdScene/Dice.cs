@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 
 
-public class Play : MonoBehaviour
+public class Dice : MonoBehaviour
 {
     public TextMeshProUGUI number;
     private List<string> lista;

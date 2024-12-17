@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
-  m_Name: IronMan
+  m_Script: {fileID: 11500000, guid: 07624faeffb4d484a9698fb3ef348003, type: 3}
+  m_Name: Lava
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 21300000, guid: f02f71b2a724837409209a81dfb2a098, type: 3}
-  faction: 3
-  ability: 1
-  Range: 0
-  hasKey: 0
+  isLava: 1
+  isHole: 0
+  isTeleport: 0
+  isIce: 0
+  Image: {fileID: 21300000, guid: af7529b4cfb1bc140ab5c00e21ccc9e4, type: 3}

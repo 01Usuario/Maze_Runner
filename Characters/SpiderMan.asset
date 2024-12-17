@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
-  m_Name: Hulk
+  m_Name: SpiderMan
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 21300000, guid: 4c6624627db6ef847b4f0cfc0afe136e, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
+  characterImage: {fileID: 21300000, guid: ffd1782541f912045bf101e98d8595e3, type: 3}
   faction: 3
-  ability: 1
+  ability: 2
+  Range: 0
   hasKey: 0
