@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Levi
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 22ffef6ebe0332f4498fd680b2fdf650, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 0
   ability: 2
-  hasKey: 0
+  abilityDescription: Desactiva Trampas
+  Range: 4
+  AbilityTime: 5
+  positionI: 0
+  positionJ: 0

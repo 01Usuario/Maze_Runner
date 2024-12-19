@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: ffd1782541f912045bf101e98d8595e3, type: 3}
   faction: 3
-  ability: 2
-  Range: 0
-  hasKey: 0
+  ability: 3
+  abilityDescription: Mueve 2 pasos extras
+  Range: 5
+  AbilityTime: 4
+  positionI: 4
+  positionJ: 2

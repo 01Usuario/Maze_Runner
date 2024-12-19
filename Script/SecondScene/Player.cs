@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 public class Player
 {
-    public List<Characters> pieceList = new List<Characters>(); // Initialize the list directly
+    public List<Characters> pieceList = new List<Characters>();
     public int id;
-    public bool isTurn;
+    public bool OnTurn;
+    
 
     public Player(int id)
     {

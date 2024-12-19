@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Gollum
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 3785845a28fda7d4cb19bd41a732419a, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 4
   ability: 4
-  hasKey: 0
+  abilityDescription: hola
+  Range: 0
+  AbilityTime: 0
+  positionI: 0
+  positionJ: 0

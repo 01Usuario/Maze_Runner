@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Eren
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 8538f3f5115f015409a93e1c0b8d3275, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 0
-  ability: 0
-  hasKey: 0
+  ability: 3
+  abilityDescription: Mueve 2 pasos extras
+  Range: 5
+  AbilityTime: 4
+  positionI: 0
+  positionJ: 0

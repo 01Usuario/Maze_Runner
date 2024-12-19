@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Luffy
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: fa6373c516d5433438d015835d66d705, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 1
   ability: 2
-  hasKey: 0
+  abilityDescription: Desactiva Trampas
+  Range: 4
+  AbilityTime: 5
+  positionI: 0
+  positionJ: 0

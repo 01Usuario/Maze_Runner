@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class SelectCharacter : MonoBehaviour
 {
+    public static SelectCharacter Instance { get; private set; }
     public List<Factions> factions = new List<Factions>();
     public Image factionImageDisplay;
     public Transform charactersPanel; 
@@ -16,9 +18,23 @@ public class SelectCharacter : MonoBehaviour
     private int piecesToChoose;
     private int chosenPieces = 0;
     private int totalPlayers;
-    public static List<Player> players = new List<Player>(); 
+    public  List<Player> players = new List<Player>(); 
     private int currentPlayerIndex = 0;
     public Player currentPlayer;
+
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persistir este objeto entre escenas.
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -50,16 +66,15 @@ public class SelectCharacter : MonoBehaviour
             {
                 if (i < factions[currentFactionIndex].factionCharacters.Count)
                 {
-                    var localIndex = i; // Capture local index
-                    var imageComponent = characterButtons[localIndex].GetComponent<Image>();
-
+                    var imageComponent = characterButtons[i].GetComponent<Image>();
+                    var index=i;
                     if (imageComponent != null)
                     {
-                        imageComponent.sprite = factions[currentFactionIndex].factionCharacters[localIndex].characterImage;
-                        Characters character = factions[currentFactionIndex].factionCharacters[localIndex];
-                        characterButtons[localIndex].onClick.RemoveAllListeners();
-                        characterButtons[localIndex].onClick.AddListener(() => SelectCharacterForPlayer(character, characterButtons[localIndex]));
-                        characterButtons[localIndex].gameObject.SetActive(true);
+                        imageComponent.sprite = factions[currentFactionIndex].factionCharacters[index].characterImage;
+                        Characters character = factions[currentFactionIndex].factionCharacters[index];
+                        characterButtons[index].onClick.RemoveAllListeners();
+                        characterButtons[index].onClick.AddListener(() => SelectCharacterForPlayer(character, characterButtons[index]));
+                        characterButtons[index].gameObject.SetActive(true);
                     }
                 }
                 else
@@ -93,17 +108,16 @@ public class SelectCharacter : MonoBehaviour
     {
         if (currentPlayer == null || currentPlayer.pieceList == null)
         {
-            Debug.LogError("Error: CurrentPlayer or its pieceList is not initialized.");
             return;
         }
 
         if (chosenPieces < piecesToChoose)
         {
             currentPlayer.pieceList.Add(character);
+            character.Owner=currentPlayer;
             button.gameObject.SetActive(false); // Hide the character button
             chosenPieces++;
 
-            // Disable navigation buttons
             nextFactionButton.interactable = false;
             previousFactionButton.interactable = false;
 

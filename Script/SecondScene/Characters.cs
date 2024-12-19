@@ -6,9 +6,17 @@ public class Characters : ScriptableObject
     public Sprite characterImage;
     public Faction faction;
     public Ability ability;
+    public string abilityDescription;
     public int Range;
-    public bool hasKey = false;
+    public int AbilityTime;
+
+    [HideInInspector]
+    public Player Owner;
+    [HideInInspector]
+    public int positionI;
+    [HideInInspector]
+    public int  positionJ;
 }
 
 public enum Faction { Shingeki_No_Kyojin, OnePiece, Naruto, Marvel,None };
-public enum Ability { Backstep, Obstruct, MaxVision, DoubleShot,ActiveTrap };
+public enum Ability { Obstruct,DetectTrap,InvalidTrap,ExtraMove };

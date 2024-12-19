@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Sasuke
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: c784cedfe8c1d92488bfe8147be6ef2a, type: 3}
-  platform: {fileID: 21300000, guid: 47772307b75e4db45b024af35aaf58cd, type: 3}
   faction: 2
   ability: 2
-  hasKey: 0
+  abilityDescription: Desactiva Trampas
+  Range: 4
+  AbilityTime: 5
+  positionI: 16
+  positionJ: 18
