@@ -15,8 +15,12 @@ MonoBehaviour:
   characterImage: {fileID: 21300000, guid: fa6373c516d5433438d015835d66d705, type: 3}
   faction: 1
   ability: 2
-  abilityDescription: Desactiva Trampas
+  abilityDescription: Teletransporte
+  OriginalRange: 4
   Range: 4
-  AbilityTime: 5
-  positionI: 0
-  positionJ: 0
+  AbilityTime: 0
+  OriginalAbilityTime: 3
+  positionI: 1
+  positionJ: 13
+  UnderIceEffect: 0
+  Inmunity: 0

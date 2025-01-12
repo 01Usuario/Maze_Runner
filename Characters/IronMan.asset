@@ -16,7 +16,11 @@ MonoBehaviour:
   faction: 3
   ability: 0
   abilityDescription: Coloca un Obstaculo
+  OriginalRange: 5
   Range: 5
-  AbilityTime: 3
-  positionI: 1
-  positionJ: 8
+  AbilityTime: 0
+  OriginalAbilityTime: 6
+  positionI: 13
+  positionJ: 12
+  UnderIceEffect: 0
+  Inmunity: 0

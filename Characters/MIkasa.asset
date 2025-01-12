@@ -15,8 +15,12 @@ MonoBehaviour:
   characterImage: {fileID: 21300000, guid: 44314e96b757d2049babaa0d3d7a31d8, type: 3}
   faction: 0
   ability: 1
-  abilityDescription: Detecta Trampas
+  abilityDescription: Reinicia el status
+  OriginalRange: 4
   Range: 4
-  AbilityTime: 4
-  positionI: 0
-  positionJ: 0
+  AbilityTime: 0
+  OriginalAbilityTime: 4
+  positionI: 16
+  positionJ: 1
+  UnderIceEffect: 0
+  Inmunity: 0

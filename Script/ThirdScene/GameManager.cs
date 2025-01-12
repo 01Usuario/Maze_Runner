@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using UnityEngine.SceneManagement;
+using Unity.PlasticSCM.Editor.WebApi;
 
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set;}
     public MazeGenerator mazeGenerator;
     public GameObject characterPrefab;
-    public int CantidadPasos;
+    public static int CantidadPasos;
     [HideInInspector]
     public Player currentPlayer;
     [HideInInspector]
@@ -20,67 +22,104 @@ public class GameManager : MonoBehaviour
     private int indexCharacter; 
     public Button nextCharacter;
     public Button prevCharacter;
+    public List<GameObject> traps = new List<GameObject>();
+    public int turn;
+    private bool newGameStarted= true;
+    public Player Winner;
     
     #region InfoPanel
     public TextMeshProUGUI Name;
-    public TextMeshProUGUI Faction ;
     public TextMeshProUGUI Range;
     public TextMeshProUGUI Ability;
+    public TextMeshProUGUI Time;
     public TextMeshProUGUI currentPlayerId;
     public Image imageCharacter;
+   
 
     #endregion InfoPanel
 
+void Awake()
+{
+    if(Instance==null){
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    else
+    Destroy(gameObject);
+
+}
     void Start()
 {
-    Debug.Log("Iniciando GameManager...");
     players = SelectCharacter.Instance.players;
+    
     currentPlayer = players[currentPlayerIndex];
     currentPiece = currentPlayer.pieceList[0];
     CantidadPasos=currentPiece.Range;
-    Debug.Log($"Primer jugador: {currentPlayer.id}, Primer personaje: {currentPiece.name}");
+    if (newGameStarted) 
+    { 
+        ResetAllScriptableObjectValues(); 
+    }
     StartCoroutine(SetUp());
+}    
+void ResetAllScriptableObjectValues() 
+{ 
+    Characters[] characters = Resources.FindObjectsOfTypeAll<Characters>();
+     foreach (var character in characters) 
+    { 
+        character.ResetValue(); 
+    } 
 }
 
-void Update()
+    void Update()
 {
     DetectedPressKey();
     UpdateVisual();
+   if(SceneManager.GetActiveScene().buildIndex==2)
+    if(VictoryCondition(currentPlayer))
+    SceneManager.LoadScene(3);
 }
-void UpdateVisual()
-    {
-        currentPlayerId.text = currentPlayer.id.ToString();
-        Name.text = currentPiece.name;
-        Faction.text = currentPiece.faction.ToString();
-        Range.text = currentPiece.Range.ToString();
-        Ability.text = currentPiece.abilityDescription;
-        imageCharacter.sprite =currentPiece.characterImage;
-    }
-
-public IEnumerator SetUp()
+    public void UpdateVisual()
 {
-    Debug.Log("Esperando a que el laberinto esté creado...");
+    if(Name!= null)
+        Name.text = currentPiece.name;
+    if (currentPlayerId != null)
+        currentPlayerId.text = currentPlayer.id.ToString();
+        
+    if (Range != null)
+        Range.text = CantidadPasos.ToString();
+        
+    if (Ability != null)
+        Ability.text = currentPiece.abilityDescription;
+        
+    if (Time != null)
+        Time.text = currentPiece.AbilityTime.ToString();
+        
+    if (imageCharacter != null)
+        imageCharacter.sprite = currentPiece.characterImage;
+}
+
+
+    public IEnumerator SetUp()
+{
     yield return new WaitUntil(() => mazeGenerator.created == true);
-    Debug.Log("Laberinto creado. Colocando personajes en las cajas.");
     PlacePiecesInBoxes();
 }
 
 void PlacePiecesInBoxes()
 {
-    Debug.Log("Colocando personajes en sus cajas iniciales...");
-    List<(int, int)>[] cajas = { MazeGenerator.Caja1, MazeGenerator.Caja2, MazeGenerator.Caja3, MazeGenerator.Caja4 };
+    List<(int, int)>[] cajas = { MazeGenerator.Caja1, MazeGenerator.Caja2,MazeGenerator.Caja3,MazeGenerator.Caja4 };
 
     for (int playerIndex = 0; playerIndex < SelectCharacter.Instance.players.Count; playerIndex++)
     {
         Player player = SelectCharacter.Instance.players[playerIndex];
         List<(int, int)> currentCaja = cajas[playerIndex];
 
-        Debug.Log($"Colocando personajes del jugador {player.id} en la caja {playerIndex + 1}.");
         for (int i = 0; i < player.pieceList.Count; i++)
         {
             if (i < currentCaja.Count)
             {
-                (int x, int y) = currentCaja[i];
+                int x = currentCaja[i].Item1;
+                int y = currentCaja[i].Item2;
                 Debug.Log($"Colocando personaje {player.pieceList[i].name} en posición ({x}, {y}).");
                 PlaceCharacterAtPosition(player.pieceList[i], x, y);
             }
@@ -111,8 +150,8 @@ void PlaceCharacterAtPosition(Characters character, int x, int y)
         imageComponent.sprite = character.characterImage;
     }
 
-    character.positionJ = y;
-    character.positionI = x;
+    character.positionJ = x;
+    character.positionI = y;
 
     CharactersDisplay characterDisplay = piece.GetComponent<CharactersDisplay>();
     if (characterDisplay != null)
@@ -130,86 +169,137 @@ void DetectedPressKey()
     if(Input.GetKeyDown(KeyCode.P)){Debug.Log("Cambiando de turno");AdvanceTurn();}
 }
 #region Logic Move
-void Move(int dx, int dy)
+public void Move(int dx, int dy)
 {
-    nextCharacter.interactable = false;
-    prevCharacter.interactable= false;
-    Debug.Log($"Intentando mover el personaje {currentPiece.name}...");
-    int newX = currentPiece.positionI + dx;
-    int newY = currentPiece.positionJ + dy;
+        nextCharacter.interactable = false;
+        prevCharacter.interactable= false;
+        int newX = currentPiece.positionI + dx;
+        int newY = currentPiece.positionJ + dy;
 
-    if (newX < 0 || newX >= MazeGenerator.dim || newY < 0 || newY >= MazeGenerator.dim || mazeGenerator.grid[newX, newY] == 1)
-    {
-        Debug.Log("Movimiento inválido: fuera de límites o hacia una pared.");
-        return;
-    }
+        if (newX < 0 || newX >= MazeGenerator.dim || newY < 0 || newY >= MazeGenerator.dim || mazeGenerator.grid[newX, newY] == 1)
+        {
+            return;
+        }
 
-    Debug.Log($"Movimiento válido. Nueva posición: ({newX}, {newY}).");
-    GameObject piece = GetCharacterGameObject(currentPiece);
+        GameObject piece = GetCharacterGameObject(currentPiece);
 
-    mazeGenerator.grid[currentPiece.positionI, currentPiece.positionJ] = 0;
-    mazeGenerator.grid[newX, newY] = 2;
+        mazeGenerator.grid[currentPiece.positionI, currentPiece.positionJ] = 0;
+        mazeGenerator.grid[newX, newY] = 2;
 
-    currentPiece.positionI = newX;
-    currentPiece.positionJ = newY;
+        currentPiece.positionI = newX;
+        currentPiece.positionJ = newY;
 
-    RectTransform rectTransform = piece.GetComponent<RectTransform>();
-    float cellWidth = mazeGenerator.WorkSpaceRectTransform.rect.width / MazeGenerator.dim;
-    float cellHeight = mazeGenerator.WorkSpaceRectTransform.rect.height / MazeGenerator.dim;
-    rectTransform.anchoredPosition = new Vector2(
-        newY * cellWidth - mazeGenerator.WorkSpaceRectTransform.rect.width / 2 + cellWidth / 2,
-        newX * cellHeight - mazeGenerator.WorkSpaceRectTransform.rect.height / 2 + cellHeight / 2
-    );
+        RectTransform rectTransform = piece.GetComponent<RectTransform>();
+        float cellWidth = mazeGenerator.WorkSpaceRectTransform.rect.width / MazeGenerator.dim;
+        float cellHeight = mazeGenerator.WorkSpaceRectTransform.rect.height / MazeGenerator.dim;
+        rectTransform.anchoredPosition = new Vector2(
+            newY * cellWidth - mazeGenerator.WorkSpaceRectTransform.rect.width / 2 + cellWidth / 2,
+            newX * cellHeight - mazeGenerator.WorkSpaceRectTransform.rect.height / 2 + cellHeight / 2
+        );
 
-    CantidadPasos--;
-    Debug.Log($"Pasos restantes: {CantidadPasos}");
+        CantidadPasos--;
+        if(VictoryCondition(currentPlayer))
+        {
+    
+            foreach (var player in players)
+            {       foreach(var pieces in player.pieceList)
+                {
+                pieces.Range = pieces.OriginalRange;
+                pieces.AbilityTime = pieces.OriginalAbilityTime;
+                pieces.UnderIceEffect = false;
+                pieces.Inmunity= false;
+                }
+            }
+    
+            SceneManager.LoadScene(3);   
+        }
+        if (CantidadPasos == 0)
+        {
+           AdvanceTurn();
+        }
 
-    if (CantidadPasos == 0)
-    {
-        Debug.Log("Pasos agotados. Cambiando turno...");
-        AdvanceTurn();
-    }
+
 }
 #endregion
 
-void AdvanceTurn()
-{
+public void AdvanceTurn()
+{ 
+    if(currentPlayer.id==0){
+        turn++;
+        Debug.Log(turn);
+        ReduceCooldown();
+        
+    }
+    if(SceneManager.GetActiveScene().buildIndex==2)
+    UpdateVisual();
     nextCharacter.interactable = true;
     prevCharacter.interactable= true;
-    Debug.Log("Cambiando turno...");
     currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
     currentPlayer = players[currentPlayerIndex];
-    currentPiece = currentPlayer.pieceList[0];
+    currentPiece = currentPlayer.pieceList[indexCharacter];
     CantidadPasos = currentPiece.Range;
-
-    Debug.Log($"Turno del jugador: {currentPlayer.id}. Personaje seleccionado: {currentPiece.name}");
+}
+ void ReduceCooldown() 
+{
+     foreach (var player in players) 
+    { 
+    
+    foreach (var character in player.pieceList) 
+    { 
+        if (character.AbilityTime > 0) 
+        {
+             character.AbilityTime -= 1; 
+             if(character.UnderIceEffect==true)
+             character.Range=character.OriginalRange;
+             character.Inmunity = false;
+        } 
+    } 
+}
 }
 public void NextCharacter()
 { 
-    currentPiece = currentPlayer.pieceList[(indexCharacter+1)% currentPlayer.pieceList.Count];
+    indexCharacter =(indexCharacter+1)% currentPlayer.pieceList.Count;
+    currentPiece = currentPlayer.pieceList[indexCharacter];
 }
 public void PreviousCharacter()
 { 
     indexCharacter = (indexCharacter-1 + currentPlayer.pieceList.Count) % currentPlayer.pieceList.Count;
-    currentPiece = currentPlayer.pieceList[indexCharacter];
+    currentPiece = currentPlayer.pieceList[indexCharacter]; 
 }
 
-
-GameObject GetCharacterGameObject(Characters character)
+public  GameObject GetCharacterGameObject(Characters character)
 {
-    Debug.Log($"Buscando GameObject del personaje {character.name}...");
     CharactersDisplay[] charactersDisplays = FindObjectsOfType<CharactersDisplay>();
     foreach (var display in charactersDisplays)
     {
         if (display.character == character)
         {
-            Debug.Log($"GameObject encontrado para {character.name}.");
             return display.gameObject;
         }
     }
-    Debug.LogError($"No se encontró el GameObject del personaje {character.name}.");
     return null;
 }
 
+    public bool VictoryCondition(Player currentPlayer)
+    {
+        int count =0;
+        foreach(var character in currentPlayer.pieceList)
+        {
+             foreach(var position in mazeGenerator.CentroList )
+            {
+                if(character.positionI==position.Item1 && character.positionJ==position.Item2){
+                    count++;
+                    if(count==ConfigureOptions.pieceCount){
+                        GameData.Instance.winnerPlayer =currentPlayer;
+                        return true;
+                    }
+                }
+                
+
+            }
+           
+        }   
+        return false;
+    }
 
 }

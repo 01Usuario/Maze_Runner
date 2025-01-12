@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 4cb0bac37f6739949981fa5d05f534ff, type: 3}
   faction: 3
-  ability: 1
-  abilityDescription: 'Detecta trampas alrededor '
+  ability: 4
+  abilityDescription: Destruye Trampas
+  OriginalRange: 5
   Range: 5
-  AbilityTime: 3
-  positionI: 0
-  positionJ: 0
+  AbilityTime: 0
+  OriginalAbilityTime: 4
+  positionI: 8
+  positionJ: 9
+  UnderIceEffect: 0
+  Inmunity: 0

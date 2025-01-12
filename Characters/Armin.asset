@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: d71f82a1e0a63144787c26616a7d3934, type: 3}
   faction: 0
-  ability: 0
-  abilityDescription: Coloca un Obstaculo
+  ability: 4
+  abilityDescription: Destruye Trampas
+  OriginalRange: 4
   Range: 4
-  AbilityTime: 3
+  AbilityTime: 0
+  OriginalAbilityTime: 4
   positionI: 0
   positionJ: 0
+  UnderIceEffect: 0
+  Inmunity: 0

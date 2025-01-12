@@ -16,7 +16,11 @@ MonoBehaviour:
   faction: 2
   ability: 3
   abilityDescription: Mueve 2 pasos extras
+  OriginalRange: 5
   Range: 5
-  AbilityTime: 4
-  positionI: 19
-  positionJ: 19
+  AbilityTime: 0
+  OriginalAbilityTime: 2
+  positionI: 14
+  positionJ: 17
+  UnderIceEffect: 0
+  Inmunity: 0

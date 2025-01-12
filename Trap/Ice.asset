@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07624faeffb4d484a9698fb3ef348003, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: 
-  isLava: 0
-  isHole: 0
-  isTeleport: 0
-  isIce: 1
-  Image: {fileID: 21300000, guid: 3a94b39ebacc9fe4ab2c4640d276f54e, type: 3}
+  trapType: 1
+  ImageTrap: {fileID: 21300000, guid: 050d6c67be41d6f47b39670575220686, type: 3}
+  duration: 4

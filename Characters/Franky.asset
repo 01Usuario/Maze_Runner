@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8891558e4b8a0248b2fcd429e82326f, type: 3}
+  m_Name: Franky
+  m_EditorClassIdentifier: 
+  characterImage: {fileID: 21300000, guid: f1fa59ee3ae0a6c40aa35e15c5d72a00, type: 3}
+  faction: 1
+  ability: 4
+  abilityDescription: Destruye Trampas
+  OriginalRange: 4
+  Range: 4
+  AbilityTime: 0
+  OriginalAbilityTime: 5
+  positionI: 0
+  positionJ: 0
+  UnderIceEffect: 0
+  Inmunity: 0

@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 32a55f67d1e5c454191f9f543aef4dc1, type: 3}
   faction: 1
-  ability: 1
-  abilityDescription: Detecta Trampas
+  ability: 3
+  abilityDescription: 2 Pasos Extras
+  OriginalRange: 5
   Range: 5
-  AbilityTime: 4
+  AbilityTime: 0
+  OriginalAbilityTime: 2
   positionI: 0
   positionJ: 0
+  UnderIceEffect: 0
+  Inmunity: 0

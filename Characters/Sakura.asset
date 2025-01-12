@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: a33e994c6b5e1f942b747d356dd85c68, type: 3}
   faction: 2
-  ability: 0
-  abilityDescription: Coloca un Obstaculo
+  ability: 1
+  abilityDescription: Reinicia Status
+  OriginalRange: 4
   Range: 4
-  AbilityTime: 3
-  positionI: 16
-  positionJ: 18
+  AbilityTime: 0
+  OriginalAbilityTime: 3
+  positionI: 1
+  positionJ: 2
+  UnderIceEffect: 0
+  Inmunity: 0

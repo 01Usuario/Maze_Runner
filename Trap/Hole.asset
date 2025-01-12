@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07624faeffb4d484a9698fb3ef348003, type: 3}
   m_Name: Hole
   m_EditorClassIdentifier: 
-  isLava: 0
-  isHole: 1
-  isTeleport: 0
-  isIce: 0
-  Image: {fileID: 21300000, guid: 75c65911bb471b540a3c653633c439f1, type: 3}
+  trapType: 2
+  ImageTrap: {fileID: 21300000, guid: 75c65911bb471b540a3c653633c439f1, type: 3}

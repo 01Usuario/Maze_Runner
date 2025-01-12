@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class SelectCharacter : MonoBehaviour
 {
     public static SelectCharacter Instance { get; private set; }
@@ -113,8 +112,8 @@ public class SelectCharacter : MonoBehaviour
 
         if (chosenPieces < piecesToChoose)
         {
+            
             currentPlayer.pieceList.Add(character);
-            character.Owner=currentPlayer;
             button.gameObject.SetActive(false); // Hide the character button
             chosenPieces++;
 
@@ -145,4 +144,6 @@ void AdvanceTurn()
             SceneManager.LoadScene(2); // Proceed to the next scene when all players are done
         }
     }
+    
+    
 }

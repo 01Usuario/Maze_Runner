@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImage: {fileID: 21300000, guid: 22ffef6ebe0332f4498fd680b2fdf650, type: 3}
   faction: 0
-  ability: 2
-  abilityDescription: Desactiva Trampas
-  Range: 4
-  AbilityTime: 5
-  positionI: 0
-  positionJ: 0
+  ability: 0
+  abilityDescription: Obstuye el camino
+  OriginalRange: 6
+  Range: 6
+  AbilityTime: 0
+  OriginalAbilityTime: 6
+  positionI: 9
+  positionJ: 8
+  UnderIceEffect: 0
+  Inmunity: 0
